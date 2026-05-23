@@ -22,22 +22,34 @@
                 
                 <div class="feed-row">
                     <div class="card widget-hype">
-                        <h3>HYPE FEED</h3>
-                        <div class="feed-list" id="hype-stream">
-                            <div class="feed-item">
-                                <span class="feed-icon">󰚝</span>
-                                <div class="feed-content">
-                                    <h4>Hazbin Hotel Wiki: Overlord Analysis</h4>
-                                    <small>Static Backup • Active</small>
+                        <h3>CORE SYSTEM MONITOR</h3>
+                        <div class="system-stream" style="display: flex; flex-direction: column; gap: 15px; padding-top: 10px;">
+                            
+                            <div class="sys-item" style="display: flex; flex-direction: column; gap: 5px;">
+                                <div class="sys-info" style="display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: bold; letter-spacing: 1px;">
+                                    <span>CPU YÜKÜ (<small id="cpu-model" style="color: #00ff55;">Detecting...</small>)</span>
+                                    <span id="cpu-text" class="neon-text-green">0%</span>
+                                </div>
+                                <div class="sys-bar-bg">
+                                    <div id="cpu-bar" class="sys-bar-fill" style="width: 0%;"></div>
                                 </div>
                             </div>
-                            <div class="feed-item">
-                                <span class="feed-icon">󰄛</span>
-                                <div class="feed-content">
-                                    <h4>Void-Entity: Code & Aesthetics</h4>
-                                    <small>Static Backup • Active</small>
+
+                            <div class="sys-item" style="display: flex; flex-direction: column; gap: 5px;">
+                                <div class="sys-info" style="display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: bold; letter-spacing: 1px;">
+                                    <span>CORTEX RAM BELLEK</span>
+                                    <span id="ram-text" class="neon-text-purple">0 / 0 GB</span>
+                                </div>
+                                <div class="sys-bar-bg">
+                                    <div id="ram-bar" class="sys-bar-fill purple-bar" style="width: 0%;"></div>
                                 </div>
                             </div>
+
+                            <div class="sys-item flex-row" style="display: flex; justify-content: space-between; font-size: 0.85rem; border-top: 1px dashed rgba(255, 255, 255, 0.1); padding-top: 10px;">
+                                <span>SİSTEM UPTIME:</span>
+                                <span id="uptime-text" style="color: #00ff55; font-weight: bold;">0s 0dk</span>
+                            </div>
+
                         </div>
                     </div>
 
@@ -61,12 +73,12 @@
                 </div>
 
                 <div class="widget-box">
-    <div class="widget-header">
-        <h3>COMMIT TRACKER</h3>
-        <span class="badge">Avionics Trainee</span>
-    </div>
-    <div class="commit-grid" id="commit-grid"></div>
-</div>
+                    <div class="widget-header">
+                        <h3>COMMIT TRACKER</h3>
+                        <span class="badge">Avionics Trainee</span>
+                    </div>
+                    <div class="commit-grid" id="commit-grid"></div>
+                </div>
 
                 <div class="card widget-soundscape">
                     <h3>SOUNDSCAPE ENGINE <small>(Live)</small></h3>

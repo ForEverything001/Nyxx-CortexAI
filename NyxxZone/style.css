@@ -408,23 +408,94 @@ body {
 
 
 
+/* COMMIT TRACKER ANA KUTUSU VE GRID YAPISI */
 .commit-grid {
     display: grid;
-    grid-template-columns: repeat(24, 1fr); /* 24 sütunlu yan yana dizilim */
-    gap: 4px;
-    padding: 10px 0;
+    grid-template-columns: repeat(24, 1fr); /* 24 sütun yan yana */
+    gap: 5px; /* Kutuların arasındaki siber boşluk */
+    padding: 12px 0;
+    width: 100%;
 }
 
+/* HER BİR COMMIT KARE PROTOKOLÜ */
 .commit-cell {
     width: 100%;
-    aspect-ratio: 1; /* Tam kare olması için */
-    background-color: rgba(255, 255, 255, 0.05); /* Boş gün, koyu mat mor/siyah */
-    border-radius: 2px;
-    transition: background-color 0.3s ease;
+    aspect-ratio: 1; /* Tam kare kalması için */
+    background-color: rgba(255, 255, 255, 0.03); /* Boş/Katkısız gün - Koyu mat mor/siyah matris */
+    border-radius: 3px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
 }
 
-/* Kodlama yoğunluğuna göre yeşilin tonları (Siberpunk Neon Green) */
-.commit-level-1 { background-color: #004d1a; } /* Az commit */
-.commit-level-2 { background-color: #00802b; } /* Orta commit */
-.commit-level-3 { background-color: #00b33c; } /* Yoğun commit */
-.commit-level-4 { background-color: #00ff55; box-shadow: 0 0 8px #00ff55; } /* Çılgın aviyonik yüklemesi! */
+/* Üzerine gelince siber parlama efekti */
+.commit-cell:hover {
+    transform: scale(1.15);
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(0, 255, 85, 0.5);
+}
+
+/* GERÇEK GİTHUB YOĞUNLUK SEVİYELERİ (Neon Yeşil Matrisi) */
+.commit-level-1 { 
+    background-color: #004d1a !important; 
+}
+.commit-level-2 { 
+    background-color: #00802b !important; 
+}
+.commit-level-3 { 
+    background-color: #00b33c !important; 
+}
+.commit-level-4 { 
+    background-color: #00ff55 !important; 
+    box-shadow: 0 0 8px #00ff55; /* En yoğun günlere siber-neon parlama */
+}
+
+
+
+/* SİSTEM MONİTÖRÜ GÖRSEL PROTOKOLÜ */
+.system-stream {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-top: 10px;
+}
+.sys-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.sys-item.flex-row {
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    padding-top: 10px;
+}
+.sys-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.sys-bar-bg {
+    width: 100%;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+}
+.sys-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00802b, #00ff55);
+    box-shadow: 0 0 8px #00ff55;
+    transition: width 0.5s ease-in-out;
+    width: 0%;
+}
+/* RAM için mor neon çubuk */
+.purple-bar {
+    background: linear-gradient(90deg, #800080, #ff00ff) !important;
+    box-shadow: 0 0 8px #ff00ff !important;
+}
+.neon-text-green { color: #00ff55; text-shadow: 0 0 5px #00ff55; }
+.neon-text-purple { color: #ff00ff; text-shadow: 0 0 5px #ff00ff; }

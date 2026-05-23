@@ -9,7 +9,9 @@ const GROQ_KEY = process.env.GROQ_API_KEY;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static('C:/Users/Balikci/Desktop/NyxxZone'));
+
+// Dinamik ve temiz statik dosya köprüsü
+app.use(express.static(path.join(__dirname, '../NyxxZone')));
 
 // --- KARAKTER TANIMINI DOSYADAN ÇEKME ---
 let systemPrompt = "";
@@ -27,23 +29,50 @@ let chatHistory = [
     { role: 'system', content: systemPrompt }
 ];
 
+// --- GİTHUB COMMIT GRİD ENDPOINT'İ (TOKENSIZ SCRAPER) ---
+app.get('/api/github-commits/:username', async (req, res) => {
+    const { username } = req.params;
+    try {
+        // GitHub'ın profilindeki contribution takvimini html olarak çekiyoruz
+        const response = await fetch(`https://github.com/users/${username}/contributions`);
+        if (!response.ok) throw new Error("GitHub'a erişilemedi amk");
+        
+        const html = await response.text();
+        
+        // HTML içindeki data-level değerlerini (0-4 arası yoğunluk) avlıyoruz
+        const regex = /data-level="([0-4])"/g;
+        let matches;
+        const levels = [];
+        
+        while ((matches = regex.exec(html)) !== null) {
+            levels.push(parseInt(matches[1]));
+        }
+        
+        // Arayüze tam oturması için son 96 günün gerçek verisini dilimliyoruz
+        const last96Days = levels.slice(-96);
+        res.json({ success: true, data: last96Days });
+        
+    } catch (error) {
+        console.error("GitHub Scraper Hatası:", error);
+        res.status(500).json({ success: false, error: "Veri çekilemedi" });
+    }
+});
+
 // --- GROQ HTTP API MOTORU ---
 async function fetchGroqWithCharacter(userMessage) {
     if (!GROQ_KEY) return "[Cortex Error]: .env içinde API anahtarı eksik aq.";
 
-    // Canlı Panel Durumu (Mallaşmayı ve yalan söylemesini engelleyen kısım)
     const systemStateContext = `
 [CURRENT SYSTEM STATE - REALTIME]:
 - HYPE FEED: BAĞLANTI HATASI (Fandom API şu an yanıt vermiyor veya Proxy engeline takıldı!). İçerik çekilemedi.
 - FANDOM UPDATES: LoRa_SYSTEM_ACTIVE (Sinyal stabil, veri bekleniyor).
 - SOUNDSCAPE ENGINE: Aktif. Spotify Listesi: VOXXY (Çalıyor).
-- COMMIT TRACKER: AKTİF (96 günlük Avionics Trainee kodlama matrisi yeşil grid şeklinde canlı işleniyor).
+- COMMIT TRACKER: AKTİF (Nyxx'in GERÇEK GitHub profil verileri çekildi, sahte değil!).
 Nyxx sana Hype Feed veya Fandom hakkında soru sorursa, şu an API'de BAĞLANTI HATASI olduğunu bilerek konuş, kafandan yalan haber uydurma amk!`;
 
     try {
         chatHistory.push({ role: 'user', content: userMessage });
 
-        // Llama'ya karakter tanımı + anlık panel hatasını besliyoruz
         const finalMessages = [
             chatHistory[0], 
             { role: 'system', content: systemStateContext }, 
@@ -54,7 +83,6 @@ Nyxx sana Hype Feed veya Fandom hakkında soru sorursa, şu an API'de BAĞLANTI 
             chatHistory = [chatHistory[0], ...chatHistory.slice(-15)];
         }
 
-        // TAMAMEN DOĞRU TEMİZ URL: Asla api.api... değil!
         const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
             method: 'POST',
             headers: {
@@ -64,7 +92,7 @@ Nyxx sana Hype Feed veya Fandom hakkında soru sorursa, şu an API'de BAĞLANTI 
             body: JSON.stringify({
                 model: 'llama-3.1-8b-instant',
                 messages: finalMessages,
-                temperature: 0.4, // Delüzyon yapmasın diye stabiliteye çektik
+                temperature: 0.4,
                 max_tokens: 250
             })
         });
@@ -83,7 +111,7 @@ Nyxx sana Hype Feed veya Fandom hakkında soru sorursa, şu an API'de BAĞLANTI 
 
     } catch (error) {
         console.error("Groq ağ bağlantı hatası detaylı çıktı:", error);
-        return "[Cortex Error]: Karakter çekirdeği ile iletişim hat hattı koptu. Terminal loguna bak.";
+        return "[Cortex Error]: Karakter çekirdeği ile iletişim hat hattı koptu.";
     }
 }
 
@@ -103,7 +131,7 @@ app.post('/api/chat', async (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`\n==================================================`);
-    console.log(`  🚀 CORTEX SYSTEM ENGINE v1.2 - FINAL FIX`);
+    console.log(`  🚀 CORTEX SYSTEM ENGINE v1.3 - GITHUB SCRAPER LINKED`);
     console.log(`  🤖 MODEL: Llama 3.1 8B via Pure JS Fetch`);
     console.log(`  🔗 LINK: http://localhost:${PORT}`);
     console.log(`==================================================\n`);
