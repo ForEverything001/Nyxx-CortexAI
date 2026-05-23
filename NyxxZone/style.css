@@ -1,0 +1,430 @@
+/* NyxxZone - MIND PALACE v1.1 Stil Dosyası */
+/* Temel Ayarlar ve Neon Chaos Renk Değişkenleri */
+:root {
+    --bg-main: #0A0A0F;
+    --bg-box: #151520;
+    --accent-main: #FF3CAC;
+    --accent-aux: #784CFF;
+    --text-main: #F5F7FF;
+    --font-terminal: 'JetBrains Mono', monospace;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: var(--font-terminal);
+    min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+/* Üst Banner Estetiği */
+.top-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(120, 76, 255, 0.2); /* Hafif mor çizgi */
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.title small {
+    font-size: 0.8rem;
+    color: var(--accent-aux);
+}
+
+.user-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.badge {
+    background-color: var(--accent-main);
+    color: var(--bg-main);
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/* Ana Grid Düzeni */
+.main-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr; /* Sol taraf biraz daha geniş, sağ taraf chat */
+    gap: 20px;
+    height: calc(100vh - 100px); /* Kalan tüm dikey alanı kaplasın */
+}
+
+/* Sol Kolon İç Yapısı */
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Üstteki Yan Yana Duran Kutular */
+.feed-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 20px;
+    height: 250px; /* Sabit yükseklik verdik ki taşmasın */
+}
+
+/* Genel Kart Tasarımı (Neon Chaos Esintisi) */
+.card {
+    background-color: var(--bg-box);
+    border: 1px solid rgba(120, 76, 255, 0.2); /* Hafif mor kenarlık */
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s ease;
+}
+
+/* Kutunun üzerine gelince hafifçe parlasın */
+.card:hover {
+    border-color: var(--accent-aux);
+}
+
+/* Başlık Stilleri */
+.card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.card h3 small {
+    color: rgba(245, 247, 255, 0.5);
+}
+
+/* Geçici Yazı Stili */
+.placeholder-text {
+    color: rgba(245, 247, 255, 0.4);
+    font-size: 0.85rem;
+}
+
+/* Özel Tasarımlar */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.sub-badge {
+    background-color: rgba(0, 255, 150, 0.1);
+    color: #00ff96;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 255, 150, 0.3);
+}
+
+/* ASCII Sanat Alanı */
+.ascii-art {
+    font-family: var(--font-terminal);
+    font-size: 0.8rem;
+    color: var(--accent-main);
+    line-height: 1.2;
+}
+
+
+/* SOUNDSCAPE ENGINE ÖZEL CSS */
+.widget-soundscape {
+    justify-content: space-between;
+    height: 100%; /* Kalan alana tam otursun */
+}
+
+/* Dalga Konteyneri */
+.audio-wave {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    height: 80px;
+    margin: 20px 0;
+}
+
+/* Her Bir Dalga Çubuğu */
+.audio-wave .bar {
+    display: block;
+    width: 6px;
+    height: 10px;
+    border-radius: 4px;
+    /* Soldan sağa pembeden mora gradyan */
+    background: linear-gradient(to bottom, var(--accent-main), var(--accent-aux));
+    animation: pulseWave 1.2s ease-in-out infinite alternate;
+    box-shadow: 0 0 10px rgba(255, 60, 172, 0.2);
+}
+
+/* Dalgaların kaotik ve rastgele oynaması için animasyon gecikmeleri (Nth-child delay) */
+.audio-wave .bar:nth-child(2n) { animation-delay: 0.2s; animation-duration: 0.8s; }
+.audio-wave .bar:nth-child(3n) { animation-delay: 0.4s; animation-duration: 1.4s; }
+.audio-wave .bar:nth-child(4n) { animation-delay: 0.1s; animation-duration: 1.1s; }
+.audio-wave .bar:nth-child(5n) { animation-delay: 0.6s; animation-duration: 0.7s; }
+.audio-wave .bar:nth-child(7n) { animation-delay: 0.3s; animation-duration: 1.3s; }
+
+/* Ekolayzır Animasyonu */
+@keyframes pulseWave {
+    0% {
+        height: 10px;
+        transform: scaleY(1);
+    }
+    100% {
+        height: 70px;
+        transform: scaleY(1);
+    }
+}
+
+/* Spotify Alt Bilgi Alanı */
+.spotify-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(245, 247, 255, 0.05);
+    padding-top: 15px;
+}
+
+.playlist-name a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 700;
+    border-bottom: 1px dashed var(--accent-main);
+}
+
+.stream-link {
+    color: rgba(245, 247, 255, 0.6);
+    text-decoration: none;
+    font-size: 0.75rem;
+    transition: color 0.2s;
+}
+
+.stream-link:hover {
+    color: var(--accent-aux);
+}
+
+/* Spotify Logosu yerine tatlı mini yeşil nokta */
+.spo-icon {
+    color: #1DB954;
+    margin-right: 5px;
+}
+
+
+
+/* Kutuların oranlarını sabitleyen ana flex yapısı */
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%; /* Sağ kolonla eşitlensin */
+}
+
+/* Üst satırın yüksekliğini sabitleyelim ki boşluk kalmasın */
+.feed-row {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 20px;
+    height: 220px; /* Net dikey sınır koyduk */
+}
+
+/* Hype Feed Listesi */
+.feed-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow-y: auto;
+    flex-grow: 1; /* Kalan tüm kutu içini kaplasın */
+}
+
+/* ASCII Roket alanı kutuya tam sığsın diye */
+.ascii-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.ascii-art {
+    font-family: var(--font-terminal);
+    font-size: 0.7rem; /* Roket kutudan taşmasın diye hafif küçülttük */
+    color: var(--accent-aux);
+    line-height: 1;
+    text-shadow: 0 0 8px rgba(120, 76, 255, 0.3);
+    margin: auto 0;
+}
+
+/* Spotify hizalama problemi çözümü */
+.spotify-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(245, 247, 255, 0.05);
+    padding-top: 12px;
+    width: 100%;
+}
+
+
+/* CORTEX CHAT ÖZEL CSS */
+.widget-cortex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.cortex-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(120, 76, 255, 0.1);
+    padding-bottom: 10px;
+}
+
+/* Aktif Yeşil Nokta Animasyonu */
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #00ff96;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #00ff96;
+}
+
+.pulsing {
+    animation: statusPulse 1.5s infinite alternate;
+}
+
+@keyframes statusPulse {
+    0% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+/* Mesaj Alanı */
+.chat-area {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 5px;
+    max-height: calc(100vh - 220px);
+}
+
+/* Mesaj Balonları */
+.msg {
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    max-width: 85%;
+    word-break: break-word;
+}
+
+.msg-ai {
+    background: rgba(120, 76, 255, 0.05);
+    border-left: 3px solid var(--accent-aux);
+    align-self: flex-start;
+}
+
+.msg-user {
+    background: rgba(255, 60, 172, 0.05);
+    border-right: 3px solid var(--accent-main);
+    align-self: flex-end;
+    text-align: right;
+}
+
+.msg-author {
+    font-size: 0.7rem;
+    font-weight: 800;
+    display: block;
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+}
+
+.msg-ai .msg-author { color: var(--accent-aux); }
+.msg-user .msg-author { color: var(--accent-main); }
+
+/* Input ve Gönderme Alanı */
+.chat-input-area {
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid rgba(245, 247, 255, 0.05);
+    padding-top: 15px;
+}
+
+.chat-input-area input {
+    flex-grow: 1;
+    background: #0A0A0F;
+    border: 1px solid rgba(120, 76, 255, 0.2);
+    border-radius: 6px;
+    padding: 10px 15px;
+    color: var(--text-main);
+    font-family: var(--font-terminal);
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.chat-input-area input:focus {
+    outline: none;
+    border-color: var(--accent-main);
+    box-shadow: 0 0 10px rgba(255, 60, 172, 0.1);
+}
+
+.chat-input-area button {
+    background: var(--accent-aux);
+    color: var(--text-main);
+    border: none;
+    padding: 0 20px;
+    border-radius: 6px;
+    font-family: var(--font-terminal);
+    font-weight: 700;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.chat-input-area button:hover {
+    background: var(--accent-main);
+}
+
+
+
+.commit-grid {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr); /* 24 sütunlu yan yana dizilim */
+    gap: 4px;
+    padding: 10px 0;
+}
+
+.commit-cell {
+    width: 100%;
+    aspect-ratio: 1; /* Tam kare olması için */
+    background-color: rgba(255, 255, 255, 0.05); /* Boş gün, koyu mat mor/siyah */
+    border-radius: 2px;
+    transition: background-color 0.3s ease;
+}
+
+/* Kodlama yoğunluğuna göre yeşilin tonları (Siberpunk Neon Green) */
+.commit-level-1 { background-color: #004d1a; } /* Az commit */
+.commit-level-2 { background-color: #00802b; } /* Orta commit */
+.commit-level-3 { background-color: #00b33c; } /* Yoğun commit */
+.commit-level-4 { background-color: #00ff55; box-shadow: 0 0 8px #00ff55; } /* Çılgın aviyonik yüklemesi! */

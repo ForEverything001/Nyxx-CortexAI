@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIND PALACE v1.1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="top-banner">
+            <span class="title">MIND PALACE <small>v1.1</small></span>
+            <div class="user-badge">Nyxx <span class="badge">delulu DLC</span></div>
+        </header>
+
+        <main class="main-grid">
+            
+            <section class="left-column">
+                
+                <div class="feed-row">
+                    <div class="card widget-hype">
+                        <h3>HYPE FEED</h3>
+                        <div class="feed-list" id="hype-stream">
+                            <div class="feed-item">
+                                <span class="feed-icon">󰚝</span>
+                                <div class="feed-content">
+                                    <h4>Hazbin Hotel Wiki: Overlord Analysis</h4>
+                                    <small>Static Backup • Active</small>
+                                </div>
+                            </div>
+                            <div class="feed-item">
+                                <span class="feed-icon">󰄛</span>
+                                <div class="feed-content">
+                                    <h4>Void-Entity: Code & Aesthetics</h4>
+                                    <small>Static Backup • Active</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card widget-ascii">
+                        <h3>Fandom Updates</h3>
+                        <div class="ascii-container">
+                            <pre class="ascii-art">
+   /\
+  /  \
+  |  |
+ /====\
+ |Avion|
+ | ics |
+ |====|
+  /||\
+ /_||_\
+                            </pre>
+                            <div class="ascii-footer">// LoRa_SYSTEM_ACTIVE</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="widget-box">
+    <div class="widget-header">
+        <h3>COMMIT TRACKER</h3>
+        <span class="badge">Avionics Trainee</span>
+    </div>
+    <div class="commit-grid" id="commit-grid"></div>
+</div>
+
+                <div class="card widget-soundscape">
+                    <h3>SOUNDSCAPE ENGINE <small>(Live)</small></h3>
+                    
+                    <div class="audio-wave">
+                        <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                        <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                        <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                        <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                        <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                    </div>
+
+                    <div class="spotify-info">
+                        <div class="playlist-name">
+                            <span class="spo-icon"></span>
+                            Playlist: <a href="https://spotify.com" target="_blank">VOXXY</a>
+                        </div>
+                        <a href="https://open.spotify.com/playlist/0nXNYqUUDSdx0ejrgPIL36" target="_blank" class="stream-link">Stream link: follow the playlist ↗</a>
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="card right-column widget-cortex">
+                <div class="cortex-header">
+                    <h3>CORTEX // Groq Llama 3.1 8B</h3>
+                    <span class="status-dot pulsing"></span>
+                </div>
+                
+                <div class="chat-area" id="chat-screen">
+                    <div class="msg msg-ai">
+                        <span class="msg-author">CORTEX:</span>
+                        <p>MIND PALACE v1.1 aktif. Sistem kontrolü sende, Nyxx. Ne fırlatıyoruz hafızaya?</p>
+                    </div>
+                </div>
+
+                <form class="chat-input-area" id="chat-form">
+                    <input type="text" id="user-input" placeholder="Type message to Cortex..." autocomplete="off">
+                    <button type="submit" id="send-btn">󰄛 SEND</button>
+                </form>
+            </section>
+
+        </main>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
